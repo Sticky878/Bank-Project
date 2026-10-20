@@ -1,0 +1,358 @@
+/* ===== FMC Bank Custom Styles ===== */
+/* ===== FMC Bank Core Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background: #f4f7f6;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.heading-section {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)), url('https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+  color: #fff;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: rgba(26, 26, 46, 0.8);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+.logo .dot { color: #ff7a00; }
+
+.nav-links ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links ul li a:hover, .nav-links ul li a.active {
+  color: #ff7a00;
+}
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+/* Hero Slider */
+.slider {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.slide {
+  display: none;
+  animation: fadeIn 1s ease-in-out;
+}
+.slide.active { display: block; }
+
+.slide h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.slide p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar { padding: 20px; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #1a1a2e;
+    flex-direction: column;
+    display: none;
+  }
+  .nav-links.active { display: block; }
+  .nav-links ul { flex-direction: column; padding: 20px; }
+  .menu-toggle { display: flex; }
+  .slide h1 { font-size: 2.5rem; }
+  .slide p { font-size: 1rem; }
+}
+
+/* ===== FMC Bank Custom Styles ===== */
+
+/* Navbar Auth Buttons */
+.nav-links ul li a.btn-login {
+  color: #fff;
+  background: transparent;
+  border: 2px solid #ff7a00;
+  padding: 8px 20px;
+  border-radius: 25px;
+  transition: all 0.3s;
+}
+.nav-links ul li a.btn-login:hover {
+  background: #ff7a00;
+  color: #fff;
+}
+
+.nav-links ul li a.btn-register {
+  color: #fff;
+  background: #ff7a00;
+  padding: 8px 20px;
+  border-radius: 25px;
+  transition: all 0.3s;
+}
+.nav-links ul li a.btn-register:hover {
+  background: #e66a00;
+}
+
+/* Hero CTA Button */
+.hero-btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 14px 35px;
+  background: #ff7a00;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.hero-btn:hover {
+  background: #e66a00;
+  transform: translateY(-2px);
+}
+
+/* Ensure navbar links remain visible on transparent background */
+.navbar .logo { color: #fff; }
+.nav-links ul li a { color: #fff; }
+.social-icons a { color: #fff; }
+
+/* ===== AUTH PAGES (Login / Register) ===== */
+
+.auth-body {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 15px;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 480px;
+}
+
+.auth-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 45px 35px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.auth-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff7a00;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.auth-logo span { color: #333; }
+
+.auth-card h2 {
+  font-size: 26px;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.auth-subtitle {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+/* Input Groups */
+.input-group {
+  position: relative;
+  margin-bottom: 18px;
+  text-align: left;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.input-group i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff7a00;
+  font-size: 15px;
+}
+
+.input-group input {
+  width: 100%;
+  box-sizing: border-box;        /* ⬅️ CRITICAL — fixes the overflow */
+  padding: 14px 45px 14px 45px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s;
+  margin-top: 0;
+  display: block;                /* ⬅️ prevents inline-block gaps */
+  max-width: 100%;               /* ⬅️ safety net */
+}
+
+.input-group input:focus {
+  border-color: #ff7a00;
+  box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.1);
+}
+
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #999;
+}
+
+/* Form Row for side-by-side fields */
+.auth-card .form-row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+.auth-card .form-row .input-group {
+  flex: 1 1 0;
+  min-width: 0;    /* ⬅️ critical for flex children — lets them shrink below content size */
+}
+
+/* Options Row */
+.auth-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin: 10px 5px 25px;
+  color: #666;
+}
+.auth-options a {
+  color: #ff7a00;
+  text-decoration: none;
+}
+.auth-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+/* Terms */
+.terms {
+  display: block;
+  font-size: 13px;
+  color: #666;
+  text-align: left;
+  margin: 15px 5px 20px;
+}
+.terms a { color: #ff7a00; text-decoration: none; }
+
+/* Auth Button */
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  background: #ff7a00;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+.auth-btn:hover {
+  background: #e66a00;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3);
+}
+
+/* Auth Footer */
+.auth-footer {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #666;
+}
+.auth-footer a {
+  color: #ff7a00;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.back-home {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 13px;
+  color: #999;
+  text-decoration: none;
+}
+.back-home:hover { color: #ff7a00; }
+
+/* Responsive */
+@media (max-width: 500px) {
+  .auth-card .form-row { flex-direction: column; gap: 0; }
+  .auth-card { padding: 30px 20px; }
+}

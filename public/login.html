@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FMC Bank - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="auth-body">
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <a href="index.html" class="auth-logo">FMC Bank<span>.</span></a>
+      <h2>Welcome Back</h2>
+      <p class="auth-subtitle">Sign in to access your account</p>
+
+      <form id="login-form">
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="login-email" placeholder="Email Address" required />
+        </div>
+
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="login-password" placeholder="Password" required />
+          <span class="toggle-password" onclick="togglePassword('login-password', this)">
+            <i class="fas fa-eye"></i>
+          </span>
+        </div>
+
+        <div class="auth-options">
+          <label><input type="checkbox" id="remember-me" /> Remember me</label>
+          <a href="forgot-password.html">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="auth-btn" id="login-btn">Sign In</button>
+      </form>
+
+      <p class="auth-footer">
+        Don't have an account? <a href="register.html">Open one now</a>
+      </p>
+      <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+  </div>
+
+  <script>
+  function togglePassword(inputId, iconEl) {
+    const input = document.getElementById(inputId);
+    const icon = iconEl.querySelector("i");
+    if (input.type === "password") {
+      input.type = "text";
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    } else {
+      input.type = "password";
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    }
+  }
+
+  document.getElementById("login-form").addEventListener("submit", async (e) => {
+    e.preventDefault(); // This stops the page from reloading!
+
+    const email = document.getElementById("login-email").value.trim();
+    const password = document.getElementById("login-password").value;
+    const remember = document.getElementById("remember-me").checked;
+    const btn = document.getElementById("login-btn");
+
+    if (!email || !password) {
+      alert("Please enter both email and password.");
+      return;
+    }
+
+    // Change button text so user knows it's loading
+    const originalText = btn.innerText;
+    btn.innerText = "Signing in...";
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, remember })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        // Redirect based on role
+        if (data.role === 'admin') {
+          window.location.href = 'admin.html';
+        } else {
+          window.location.href = 'dashboard.html';
+        }
+      } else {
+        alert("❌ " + (data.error || "Login failed."));
+        btn.innerText = originalText;
+        btn.disabled = false;
+      }
+    } catch (err) {
+      console.error(err);
+      alert("❌ Cannot connect to the server. Make sure the terminal says '🚀 FMC Bank running'.");
+      btn.innerText = originalText;
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

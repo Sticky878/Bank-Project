@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FMC Bank - Open Account</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="auth-body">
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <a href="index.html" class="auth-logo">FMC Bank<span>.</span></a>
+      <h2>Open Your Account</h2>
+      <p class="auth-subtitle">Join FMC Bank in just a few steps</p>
+
+      <form id="register-form" novalidate>
+        <div class="form-row">
+          <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="first-name" placeholder="First Name" required />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="last-name" placeholder="Last Name" required />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="reg-email" placeholder="Email Address" required />
+        </div>
+
+        <div class="input-group">
+          <i class="fas fa-phone"></i>
+          <input type="tel" id="phone" placeholder="Phone Number" required />
+        </div>
+
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="reg-password" placeholder="Password" required />
+          <span class="toggle-password" onclick="togglePassword('reg-password', this)">
+            <i class="fas fa-eye"></i>
+          </span>
+        </div>
+
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="confirm-password" placeholder="Confirm Password" required />
+        </div>
+
+        <label class="terms">
+          <input type="checkbox" required /> I agree to the 
+          <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>
+        </label>
+
+        <button type="submit" class="auth-btn">Create Account</button>
+      </form>
+
+      <p class="auth-footer">
+        Already have an account? <a href="login.html">Sign in</a>
+      </p>
+      <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
