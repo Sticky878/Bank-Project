@@ -1,5 +1,4 @@
-/* ===== FMC Bank Custom Styles ===== */
-/* ===== FMC Bank Core Styles ===== */
+/* ===================== BASE ===================== */
 * {
   margin: 0;
   padding: 0;
@@ -13,32 +12,37 @@ body {
   overflow-x: hidden;
 }
 
-/* Navbar */
-.heading-section {
-  position: relative;
-  height: 100vh;
-  background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)), url('https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
-  color: #fff;
+a { text-decoration: none; }
+
+/* FIX: Global accessible focus ring (keyboard users only) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #ff7a00;
+  outline-offset: 2px;
 }
 
+/* ===================== NAVBAR ===================== */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
-  background: rgba(26, 26, 46, 0.8);
+  background: rgba(26, 26, 46, 0.85);
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(10px);
+  /* FIX: Safari support */
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
   color: #fff;
-  text-decoration: none;
 }
 .logo .dot { color: #ff7a00; }
 
@@ -46,27 +50,53 @@ body {
   display: flex;
   list-style: none;
   align-items: center;
-  gap: 20px;
+  gap: 22px;
 }
 
 .nav-links ul li a {
   color: #fff;
-  text-decoration: none;
   font-size: 15px;
   font-weight: 500;
   transition: color 0.3s;
 }
 
-.nav-links ul li a:hover, .nav-links ul li a.active {
+.nav-links ul li a:hover,
+.nav-links ul li a.active {
   color: #ff7a00;
 }
 
-/* Mobile Menu */
+/* Navbar auth buttons */
+.nav-links ul li a.btn-login {
+  border: 2px solid #ff7a00;
+  padding: 8px 20px;
+  border-radius: 25px;
+  transition: all 0.3s;
+}
+.nav-links ul li a.btn-login:hover {
+  background: #ff7a00;
+  color: #fff;
+}
+
+.nav-links ul li a.btn-register {
+  background: #ff7a00;
+  padding: 8px 20px;
+  border-radius: 25px;
+  transition: all 0.3s;
+}
+.nav-links ul li a.btn-register:hover {
+  background: #e66a00;
+}
+
+/* Mobile menu toggle */
 .menu-toggle {
   display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
+  /* FIX: give the toggle a tap target & ensure bars animate */
+  padding: 6px;
+  background: transparent;
+  border: none;
 }
 .menu-toggle .bar {
   width: 25px;
@@ -75,7 +105,29 @@ body {
   transition: 0.3s;
 }
 
-/* Hero Slider */
+/* FIX: Hamburger → X animation when JS adds .active */
+.menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ===================== HOMEPAGE HERO ===================== */
+.heading-section {
+  position: relative;
+  height: 100vh;
+  background:
+    linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)),
+    url('images/hero-bg.jpg') no-repeat center center/cover;
+  color: #fff;
+  /* FIX: prevent navbar overlapping hero content on short screens */
+  padding-top: 80px;
+}
+
 .slider {
   height: 100%;
   display: flex;
@@ -94,7 +146,6 @@ body {
 .slide h1 {
   font-size: 3.5rem;
   margin-bottom: 20px;
-  font-weight: bold;
 }
 .slide p {
   font-size: 1.2rem;
@@ -105,56 +156,10 @@ body {
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .navbar { padding: 20px; }
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #1a1a2e;
-    flex-direction: column;
-    display: none;
-  }
-  .nav-links.active { display: block; }
-  .nav-links ul { flex-direction: column; padding: 20px; }
-  .menu-toggle { display: flex; }
-  .slide h1 { font-size: 2.5rem; }
-  .slide p { font-size: 1rem; }
-}
-
-/* ===== FMC Bank Custom Styles ===== */
-
-/* Navbar Auth Buttons */
-.nav-links ul li a.btn-login {
-  color: #fff;
-  background: transparent;
-  border: 2px solid #ff7a00;
-  padding: 8px 20px;
-  border-radius: 25px;
-  transition: all 0.3s;
-}
-.nav-links ul li a.btn-login:hover {
-  background: #ff7a00;
-  color: #fff;
-}
-
-.nav-links ul li a.btn-register {
-  color: #fff;
-  background: #ff7a00;
-  padding: 8px 20px;
-  border-radius: 25px;
-  transition: all 0.3s;
-}
-.nav-links ul li a.btn-register:hover {
-  background: #e66a00;
-}
-
-/* Hero CTA Button */
+/* Hero CTA button */
 .hero-btn {
   display: inline-block;
   margin-top: 25px;
@@ -164,21 +169,299 @@ body {
   font-size: 16px;
   font-weight: bold;
   border-radius: 30px;
-  text-decoration: none;
+  border: none;
+  cursor: pointer;
   transition: all 0.3s;
 }
 .hero-btn:hover {
   background: #e66a00;
   transform: translateY(-2px);
 }
+/* FIX: respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero-btn:hover { transform: none; }
+  .slide { animation: none; }
+}
 
-/* Ensure navbar links remain visible on transparent background */
-.navbar .logo { color: #fff; }
-.nav-links ul li a { color: #fff; }
-.social-icons a { color: #fff; }
+/* ===================== INNER PAGE HEADER ===================== */
+.sub-header {
+  position: relative;
+  background:
+    linear-gradient(rgba(26, 26, 46, 0.85), rgba(26, 26, 46, 0.85)),
+    url('images/hero-bg.jpg') no-repeat center center/cover;
+  color: #fff;
+  padding-top: 90px; /* space for the fixed navbar */
+  padding-bottom: 70px;
+}
 
-/* ===== AUTH PAGES (Login / Register) ===== */
+.page-banner {
+  text-align: center;
+  padding: 30px 20px 0;
+}
+.page-banner h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+.page-banner p {
+  font-size: 1rem;
+  color: #cfd3dc;
+  letter-spacing: 1px;
+}
 
+/* ===================== SHARED SECTION LAYOUT ===================== */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.section-title {
+  font-size: 2.4rem;
+  color: #1a1a2e;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* ===================== ABOUT PAGE ===================== */
+.about-section { background: #fff; }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+.about-text h3 {
+  font-size: 1.6rem;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+}
+.about-text p {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+.about-image img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.team-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #1a1a2e;
+  margin: 30px 0;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.team-card {
+  background: #f9fafc;
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+.team-card img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  border: 4px solid #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+.team-card h4 { color: #1a1a2e; margin-bottom: 4px; }
+.team-card span {
+  color: #ff7a00;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.team-card p {
+  color: #666;
+  font-size: 0.92rem;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+/* ===================== SERVICES PAGE ===================== */
+.services-section { background: #f4f7f6; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.service-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 32px 26px;
+  text-align: center;
+  border: 1px solid #eef0f4;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  border-color: #ff7a00;
+}
+.service-card i {
+  font-size: 2.4rem;
+  color: #ff7a00;
+  margin-bottom: 18px;
+}
+.service-card h4 {
+  color: #1a1a2e;
+  margin-bottom: 10px;
+}
+.service-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* ===================== CONTACT PAGE ===================== */
+.contact-section { background: #fff; }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 26px;
+  align-items: flex-start;
+}
+.contact-item i {
+  font-size: 1.2rem;
+  color: #ff7a00;
+  background: #fff3e6;
+  padding: 12px;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-item h4 {
+  color: #1a1a2e;
+  margin-bottom: 4px;
+  font-size: 1rem;
+}
+.contact-item p {
+  color: #666;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #f9fafc;
+  padding: 32px;
+  border-radius: 14px;
+}
+.contact-form input,
+.contact-form textarea {
+  border: 1px solid #dfe3ea;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  background: #fff;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ff7a00;
+  /* FIX: visible focus ring consistent with auth inputs */
+  box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.15);
+}
+.contact-form .hero-btn {
+  align-self: flex-start;
+  margin-top: 0; /* FIX: form gap already handles spacing */
+}
+.form-note {
+  color: #1a7a1a;
+  font-weight: 600;
+  font-size: 0.92rem;
+  min-height: 20px;
+}
+
+/* ===================== FOOTER ===================== */
+.site-footer {
+  background: #1a1a2e;
+  color: #cfd3dc;
+  padding-top: 60px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer-brand .logo { font-size: 1.6rem; }
+.footer-brand p {
+  margin-top: 14px;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.footer-links h5 {
+  color: #fff;
+  margin-bottom: 16px;
+  font-size: 1rem;
+}
+.footer-links a {
+  display: block;
+  color: #b3b9c5;
+  margin-bottom: 10px;
+  font-size: 0.92rem;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: #ff7a00; }
+
+.footer-bottom {
+  border-top: 1px solid #2a2a44;
+  padding: 20px 24px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #8a92a3;
+}
+
+/* ===================== AUTH PAGES (Login / Register) ===================== */
 .auth-body {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   min-height: 100vh;
@@ -187,12 +470,10 @@ body {
   align-items: center;
   padding: 30px 15px;
 }
-
 .auth-container {
   width: 100%;
   max-width: 480px;
 }
-
 .auth-card {
   background: #fff;
   border-radius: 16px;
@@ -200,12 +481,10 @@ body {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   text-align: center;
 }
-
 .auth-logo {
   font-size: 1.8rem;
   font-weight: bold;
   color: #ff7a00;
-  text-decoration: none;
   display: inline-block;
   margin-bottom: 20px;
 }
@@ -216,22 +495,18 @@ body {
   color: #1a1a2e;
   margin-bottom: 8px;
 }
-
 .auth-subtitle {
   color: #888;
   font-size: 14px;
   margin-bottom: 30px;
 }
 
-/* Input Groups */
 .input-group {
   position: relative;
   margin-bottom: 18px;
   text-align: left;
-  box-sizing: border-box;
   width: 100%;
 }
-
 .input-group i {
   position: absolute;
   left: 15px;
@@ -240,21 +515,16 @@ body {
   color: #ff7a00;
   font-size: 15px;
 }
-
 .input-group input {
   width: 100%;
-  box-sizing: border-box;        /* ⬅️ CRITICAL — fixes the overflow */
   padding: 14px 45px 14px 45px;
   border: 1px solid #ddd;
   border-radius: 30px;
   font-size: 15px;
   outline: none;
-  transition: border-color 0.3s;
-  margin-top: 0;
-  display: block;                /* ⬅️ prevents inline-block gaps */
-  max-width: 100%;               /* ⬅️ safety net */
+  display: block;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
-
 .input-group input:focus {
   border-color: #ff7a00;
   box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.1);
@@ -267,9 +537,15 @@ body {
   transform: translateY(-50%);
   cursor: pointer;
   color: #999;
+  /* FIX: make the eye icon a proper button tap target */
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 15px;
+  line-height: 1;
 }
+.toggle-password:hover { color: #ff7a00; }
 
-/* Form Row for side-by-side fields */
 .auth-card .form-row {
   display: flex;
   gap: 12px;
@@ -277,10 +553,9 @@ body {
 }
 .auth-card .form-row .input-group {
   flex: 1 1 0;
-  min-width: 0;    /* ⬅️ critical for flex children — lets them shrink below content size */
+  min-width: 0;
 }
 
-/* Options Row */
 .auth-options {
   display: flex;
   justify-content: space-between;
@@ -289,10 +564,7 @@ body {
   margin: 10px 5px 25px;
   color: #666;
 }
-.auth-options a {
-  color: #ff7a00;
-  text-decoration: none;
-}
+.auth-options a { color: #ff7a00; }
 .auth-options label {
   display: flex;
   align-items: center;
@@ -300,7 +572,6 @@ body {
   cursor: pointer;
 }
 
-/* Terms */
 .terms {
   display: block;
   font-size: 13px;
@@ -308,9 +579,8 @@ body {
   text-align: left;
   margin: 15px 5px 20px;
 }
-.terms a { color: #ff7a00; text-decoration: none; }
+.terms a { color: #ff7a00; }
 
-/* Auth Button */
 .auth-btn {
   width: 100%;
   padding: 14px;
@@ -330,7 +600,6 @@ body {
   box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3);
 }
 
-/* Auth Footer */
 .auth-footer {
   margin-top: 25px;
   font-size: 14px;
@@ -339,7 +608,6 @@ body {
 .auth-footer a {
   color: #ff7a00;
   font-weight: bold;
-  text-decoration: none;
 }
 
 .back-home {
@@ -347,12 +615,48 @@ body {
   margin-top: 15px;
   font-size: 13px;
   color: #999;
-  text-decoration: none;
 }
 .back-home:hover { color: #ff7a00; }
 
-/* Responsive */
-@media (max-width: 500px) {
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 900px) {
+  .about-grid,
+  .contact-grid { grid-template-columns: 1fr; }
+  .team-grid,
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 768px) {
+  .navbar { padding: 18px 22px; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #1a1a2e;
+    display: none;
+  }
+  .nav-links.active { display: block; }
+  .nav-links ul {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 24px;
+    gap: 14px;
+  }
+  .menu-toggle { display: flex; }
+  .slide h1 { font-size: 2.3rem; }
+  .slide p { font-size: 1rem; }
+  .page-banner h1 { font-size: 2rem; }
+}
+
+@media (max-width: 600px) {
+  .team-grid,
+  .services-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .section-title { font-size: 1.9rem; }
+  .section-container { padding: 60px 18px; }
   .auth-card .form-row { flex-direction: column; gap: 0; }
   .auth-card { padding: 30px 20px; }
 }

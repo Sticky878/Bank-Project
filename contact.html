@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - FMC Bank</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="inner-page">
+<header class="sub-header">
+  <nav class="navbar">
+    <a href="index.html" class="logo">FMC Bank<span class="dot">.</span></a>
+    <div class="menu-toggle" id="menu-toggle">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="login.html" class="btn-login">Login</a></li>
+        <li><a href="register.html" class="btn-register">Open Account</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="page-banner">
+    <h1>Contact Us</h1>
+    <p>Home / Contact</p>
+  </div>
+</header>
+
+<main>
+  <section class="contact-section">
+    <div class="section-container">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-subtitle">
+        We're here 24/7. Reach out and we'll get back to you within one business day.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <h4>Head Office</h4>
+              <p>12 Financial Way, Victoria Island, Lagos, Nigeria</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <h4>Phone</h4>
+              <p>+234 800 362 2265</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p>support@fmcbank.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-clock"></i>
+            <div>
+              <h4>Hours</h4>
+              <p>Mon – Fri: 8:00 – 18:00 &nbsp;|&nbsp; Sat: 9:00 – 14:00</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contact-form">
+          <input type="text" name="name" placeholder="Your full name" required>
+          <input type="email" name="email" placeholder="Your email address" required>
+          <input type="text" name="subject" placeholder="Subject" required>
+          <textarea name="message" rows="5" placeholder="Your message..." required></textarea>
+          <button type="submit" class="hero-btn">Send Message</button>
+          <p class="form-note" id="form-note"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">FMC Bank<span class="dot">.</span></a>
+      <p>Secure, fast, and reliable banking for everyone.</p>
+    </div>
+    <div class="footer-links">
+      <h5>Quick Links</h5>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </div>
+    <div class="footer-links">
+      <h5>Legal</h5>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Security</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> FMC Bank. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('form-note').textContent =
+      '✅ Thank you! Your message has been received. We will reply within one business day.';
+    e.target.reset();
+  });
+</script>
+</body>
+</html>

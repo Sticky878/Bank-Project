@@ -2,7 +2,9 @@ const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcryptjs');
 const path = require('path');
 
-const dbPath = path.join(__dirname, 'fmc_bank.db');
+const dbPath = process.env.DB_DIR 
+  ? path.join(process.env.DB_DIR, 'fmc_bank.db') 
+  : path.join(__dirname, 'fmc_bank.db');
 
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) console.error('Database opening error: ', err.message);

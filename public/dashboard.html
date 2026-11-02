@@ -298,8 +298,9 @@
       document.getElementById('userAvatar').textContent = user.first_name.charAt(0) + user.last_name.charAt(0);
       document.getElementById('welcomeName').textContent = user.first_name;
       document.getElementById('accountNumber').textContent = user.account_number;
-      document.getElementById('balanceAmount').textContent = '$' + user.balance.toFixed(2);
+      
       currentUserBalance = user.balance;
+      document.getElementById('balanceAmount').textContent = '$' + user.balance.toFixed(2);
 
       loadTransactions(1);
     }
@@ -307,7 +308,11 @@
     async function loadTransactions(page = 1) {
       const search = document.getElementById('txnSearch').value.trim();
       const tbody = document.getElementById('txnBody');
-      tbody.innerHTML = '<tr><td colspan="4" class="empty"><i class="fas fa-spinner fa-spin"></i><br>Loading...</td></tr>';
+      
+      // Only show the loading spinner if the table is currently empty
+      if (tbody.innerHTML.includes('Loading...') || tbody.innerHTML.includes('Error')) {
+        tbody.innerHTML = '<tr><td colspan="4" class="empty"><i class="fas fa-spinner fa-spin"></i><br>Loading...</td></tr>';
+      }
 
       try {
         const res = await fetch(`/api/transactions?page=${page}&limit=10&search=${encodeURIComponent(search)}`);
@@ -351,7 +356,8 @@
     function downloadStatement() {
       window.location.href = '/api/transactions/export';
     }
-        function printStatement() {
+    
+    function printStatement() {
       // 1. Get user info from the screen
       const userName = document.getElementById('userName').textContent;
       const accountNumber = document.getElementById('accountNumber').textContent;
@@ -441,6 +447,7 @@
         printWindow.print();
       }, 500);
     }
+
     let searchTimeout;
     document.getElementById('txnSearch').addEventListener('input', () => {
       clearTimeout(searchTimeout);
@@ -501,9 +508,17 @@
         const data = await res.json();
 
         if (res.ok) {
-          alert('✅ ' + data.message);
           closeTransferModal();
-          checkAuth();
+          
+          // Instantly update the balance on screen
+          currentUserBalance -= amount;
+          document.getElementById('balanceAmount').textContent = '$' + currentUserBalance.toFixed(2);
+          
+          // Show the success message first
+          alert('✅ ' + data.message);
+          
+          // Sync with server in the background to ensure accuracy
+          await checkAuth(); 
         } else {
           alert('❌ ' + data.error);
         }

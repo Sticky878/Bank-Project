@@ -24,10 +24,9 @@
     <div class="nav-links" id="nav-links">
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <!-- ✅ Banking Actions -->
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li><a href="login.html" class="btn-login">Login</a></li>
         <li><a href="register.html" class="btn-register">Open Account</a></li>
       </ul>
@@ -59,3 +58,60 @@
 </header>
 
 <main>
+  <!-- Homepage content only: hero is already in the <header>.
+       Optional: add a short "Why FMC Bank" feature strip here later. -->
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">FMC Bank<span class="dot">.</span></a>
+      <p>Secure, fast, and reliable banking for everyone.</p>
+    </div>
+    <div class="footer-links">
+      <h5>Quick Links</h5>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a href="login.html">Login</a>
+    </div>
+    <div class="footer-links">
+      <h5>Legal</h5>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Security</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> FMC Bank. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  // Hero slider
+  const slides = document.querySelectorAll('.slide');
+  let idx = 0;
+  setInterval(() => {
+    slides[idx].classList.remove('active');
+    idx = (idx + 1) % slides.length;
+    slides[idx].classList.add('active');
+  }, 5000);
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Contact form (demo only — no backend yet)
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('form-note').textContent =
+      '✅ Thank you! Your message has been received. We will reply within one business day.';
+    e.target.reset();
+  });
+</script>

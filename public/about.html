@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - FMC Bank</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="inner-page">
+<header class="sub-header">
+  <nav class="navbar">
+    <a href="index.html" class="logo">FMC Bank<span class="dot">.</span></a>
+    <div class="menu-toggle" id="menu-toggle">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html" class="btn-login">Login</a></li>
+        <li><a href="register.html" class="btn-register">Open Account</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="page-banner">
+    <h1>About Us</h1>
+    <p>Home / About Us</p>
+  </div>
+</header>
+
+<main>
+  <section class="about-section">
+    <div class="section-container">
+      <h2 class="section-title">Who We Are</h2>
+      <p class="section-subtitle">
+        For over 25 years, FMC Bank has been helping individuals and businesses
+        achieve their financial goals with trust, transparency, and technology.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <h3>Our Story</h3>
+          <p>
+            Founded in 1998, FMC Bank started as a small community bank with a
+            simple mission: make banking honest and accessible. Today we serve
+            over 2 million customers across the country with a full suite of
+            personal and business banking products.
+          </p>
+          <p>
+            We combine the personal touch of a local bank with the speed and
+            security of modern digital banking — so you get the best of both worlds.
+          </p>
+        </div>
+        <div class="about-image">
+          <img src="images/about-us.jpg" alt="FMC Bank headquarters">
+        </div>
+      </div>
+
+      <h3 class="team-title">Meet Our Leadership</h3>
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="images/ceo1.jpg" alt="CEO">
+          <h4>Michael Okafor</h4>
+          <span>Chief Executive Officer</span>
+          <p>25+ years in global banking and financial strategy.</p>
+        </div>
+        <div class="team-card">
+          <img src="images/ceo2.jpg" alt="CFO">
+          <h4>Sarah Mensah</h4>
+          <span>Chief Financial Officer</span>
+          <p>Expert in risk management and financial compliance.</p>
+        </div>
+        <div class="team-card">
+          <img src="images/ceo3.jpg" alt="CTO">
+          <h4>David Chen</h4>
+          <span>Chief Technology Officer</span>
+          <p>Leads our digital banking and cybersecurity teams.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">FMC Bank<span class="dot">.</span></a>
+      <p>Secure, fast, and reliable banking for everyone.</p>
+    </div>
+    <div class="footer-links">
+      <h5>Quick Links</h5>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </div>
+    <div class="footer-links">
+      <h5>Legal</h5>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Security</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> FMC Bank. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

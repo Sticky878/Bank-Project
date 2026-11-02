@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services - FMC Bank</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="inner-page">
+<header class="sub-header">
+  <nav class="navbar">
+    <a href="index.html" class="logo">FMC Bank<span class="dot">.</span></a>
+    <div class="menu-toggle" id="menu-toggle">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html" class="btn-login">Login</a></li>
+        <li><a href="register.html" class="btn-register">Open Account</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="page-banner">
+    <h1>Our Services</h1>
+    <p>Home / Services</p>
+  </div>
+</header>
+
+<main>
+  <section class="services-section">
+    <div class="section-container">
+      <h2 class="section-title">What We Offer</h2>
+      <p class="section-subtitle">
+        Whatever your financial goal, we have a product built for it.
+      </p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fa-solid fa-wallet"></i>
+          <h4>Personal Banking</h4>
+          <p>Everyday checking and savings accounts with zero hidden fees.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-building-columns"></i>
+          <h4>Business Banking</h4>
+          <p>Business accounts, merchant tools, and payroll solutions.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-piggy-bank"></i>
+          <h4>Savings & Investments</h4>
+          <p>High-yield savings and managed investment portfolios.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-house"></i>
+          <h4>Mortgages & Loans</h4>
+          <p>Competitive rates on home, auto, and personal loans.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-credit-card"></i>
+          <h4>Credit Cards</h4>
+          <p>Rewards cards with cashback, travel points, and low APR.</p>
+        </div>
+        <div class="service-card">
+          <i class="fa-solid fa-shield-halved"></i>
+          <h4>Secure Digital Banking</h4>
+          <p>Bank anytime, anywhere with bank-grade encryption.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">FMC Bank<span class="dot">.</span></a>
+      <p>Secure, fast, and reliable banking for everyone.</p>
+    </div>
+    <div class="footer-links">
+      <h5>Quick Links</h5>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </div>
+    <div class="footer-links">
+      <h5>Legal</h5>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Security</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> FMC Bank. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
